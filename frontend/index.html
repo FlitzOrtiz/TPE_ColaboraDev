@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColaboraDev Notion Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>📝 NotionClone</h1>
+                <button class="btn-new-page" id="newPageBtn">+ Nueva Página</button>
+            </div>
+            <nav class="pages-tree" id="pagesTree">
+                <!-- Páginas se cargan dinámicamente -->
+            </nav>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main-content">
+            <header class="editor-header">
+                <div class="breadcrumb" id="breadcrumb">
+                    <span class="breadcrumb-item">Inicio</span>
+                </div>
+                <div class="editor-actions">
+                    <button class="btn-save" id="saveBtn">💾 Guardar</button>
+                    <button class="btn-delete" id="deleteBtn">🗑️ Eliminar</button>
+                </div>
+            </header>
+
+            <div class="editor-container" id="editorContainer">
+                <div class="page-header">
+                    <input type="text" class="page-title" id="pageTitle" placeholder="Título sin título">
+                </div>
+                <div class="editor" id="editor" contenteditable="true" data-placeholder="Escribe algo...">
+                </div>
+            </div>
+
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-content">
+                    <h2>🎉 Bienvenido a ColaboraDev Notion Clone</h2>
+                    <p>Selecciona una página del sidebar o crea una nueva para comenzar.</p>
+                    <button class="btn-primary" id="createFirstPage">Crear mi primera página</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading indicator -->
+    <div class="loading-indicator" id="loadingIndicator">
+        <div class="spinner"></div>
+        <p>Cargando...</p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

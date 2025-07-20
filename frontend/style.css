@@ -1,0 +1,335 @@
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #64748b;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+
+    --border-color: #e2e8f0;
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+    --sidebar-width: 280px;
+    --header-height: 64px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Layout principal */
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sidebar-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header h1 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.btn-new-page {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-new-page:hover {
+    background: #1d4ed8;
+}
+
+.pages-tree {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.5rem 0;
+}
+
+.page-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.page-item:hover {
+    background: var(--bg-tertiary);
+}
+
+.page-item.active {
+    background: var(--bg-tertiary);
+    border-left-color: var(--primary-color);
+}
+
+.page-item .page-icon {
+    margin-right: 0.5rem;
+}
+
+.page-item .page-name {
+    flex: 1;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Main content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.editor-header {
+    height: var(--header-height);
+    padding: 0 2rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-primary);
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.breadcrumb-item::after {
+    content: ' / ';
+    margin-left: 0.5rem;
+}
+
+.breadcrumb-item:last-child::after {
+    content: '';
+}
+
+.editor-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-save, .btn-delete {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-primary);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.btn-save:hover {
+    background: var(--success-color);
+    color: white;
+    border-color: var(--success-color);
+}
+
+.btn-delete:hover {
+    background: var(--danger-color);
+    color: white;
+    border-color: var(--danger-color);
+}
+
+/* Editor */
+.editor-container {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    background: transparent;
+    padding: 0.5rem 0;
+}
+
+.page-title::placeholder {
+    color: var(--text-muted);
+}
+
+.editor {
+    min-height: 400px;
+    outline: none;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+}
+
+.editor[data-placeholder]:empty::before {
+    content: attr(data-placeholder);
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.editor p {
+    margin-bottom: 1rem;
+}
+
+.editor h1, .editor h2, .editor h3 {
+    margin: 1.5rem 0 1rem 0;
+    color: var(--text-primary);
+}
+
+.editor h1 { font-size: 2rem; }
+.editor h2 { font-size: 1.5rem; }
+.editor h3 { font-size: 1.25rem; }
+
+/* Welcome screen */
+.welcome-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+}
+
+.welcome-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.welcome-content p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.btn-primary {
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+}
+
+/* Loading indicator */
+.loading-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    text-align: center;
+    z-index: 1000;
+}
+
+.loading-indicator.active {
+    display: block;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: fixed;
+        z-index: 100;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    .editor-container {
+        padding: 1rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+}
+
+/* Estados */
+.page-item.unsaved {
+    font-style: italic;
+}
+
+.page-item.unsaved::after {
+    content: '•';
+    color: var(--warning-color);
+    margin-left: auto;
+}
